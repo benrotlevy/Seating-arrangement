@@ -1,10 +1,16 @@
+import { Route } from 'react-router-dom';
 import './App.css';
+import Guests from './components/guests/Guests';
+import { Header } from './components/header/Header';
+import MapTables from './components/mapTables/MapTables';
 
 function App() {
 
   return (
     <div className="App">
-      App
+      <Header />
+      <Route exact path="/" component={MapTables} />
+      <Route exact path="/guests" component={Guests} />
     </div>
   );
 }

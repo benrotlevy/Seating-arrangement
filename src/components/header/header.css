@@ -1,0 +1,18 @@
+.nav-container {
+    display: flex;
+    background-color: var(--blue);
+}
+
+.nav-cell {
+    padding: 2rem;
+    width: 30%;
+}
+
+.links-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-container a {
+    color: #fff;
+}

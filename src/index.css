@@ -1,1 +1,10 @@
+:root {
+    --blue: rgb(0,75,106);
+}
 
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
