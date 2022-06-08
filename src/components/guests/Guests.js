@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { guestsAPI } from "../../api/api";
 import { AddGuest } from "../addGuest/AddGuest";
 import Row from "../row/Row";
@@ -9,8 +9,6 @@ const Guests = () => {
     const [guestsList, setGuestsList] = useState([]);
     const [guestsListToDisplay, setGuestsListToDisplay] = useState([]);
     const [searchInput, setSearchInput] = useState("");
-
-    const searchInputRef = useRef("");
 
     useEffect(() => {
         const getData = async() => {
@@ -26,18 +24,11 @@ const Guests = () => {
     },[])
 
     useEffect(()=> {
-        setGuestsListToDisplay([...guestsList]);
-    }, [guestsList])
-
-    useEffect(()=> {
-        if(searchInputRef.current !== searchInput) {
-            setGuestsListToDisplay(guestsList.filter(guest => {
-                const guestToString = guest.firstName+ " " +guest.lastName+" " +guest.label;
-                return guestToString.includes(searchInput);
-            }))
-        }
-        searchInputRef.current = searchInput;
-    }, [searchInput, guestsListToDisplay])
+        setGuestsListToDisplay(guestsList.filter(guest => {
+            const guestToString = guest.firstName+ " " +guest.lastName+" " +guest.label;
+            return guestToString.includes(searchInput);
+        }))
+    }, [searchInput, guestsList])
 
     const removeGuest= (id) => {
         setGuestsList(prev => prev.filter(guest => guest.id !== id));
