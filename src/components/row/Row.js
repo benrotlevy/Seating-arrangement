@@ -86,7 +86,7 @@ const Row = ({content, remove}) => {
                     <input value={label} onChange={(e)=> setLabel(e.target.value)} />
                 </div>
                 <div className="table cell">
-                    <input type="number" max={20} min="1" value={table} onChange={tableChanged} />
+                    <input type="number" max={31} min={1} value={table} onChange={tableChanged} />
                 </div>
                 {insertEditDelete()}
             </div>

@@ -1,6 +1,7 @@
 .nav-container {
     display: flex;
     background-color: var(--blue);
+    height: 4rem;
 }
 
 .nav-cell {
@@ -15,4 +16,13 @@
 
 .nav-container a {
     color: #fff;
+}
+
+.logo-cont {
+    padding: 0;
+}
+
+.logo {
+    height: 100%;
+    aspect-ratio: 1/1;
 }
