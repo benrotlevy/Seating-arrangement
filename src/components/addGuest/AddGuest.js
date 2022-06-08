@@ -3,19 +3,17 @@ import { guestsAPI } from "../../api/api";
 import { SelectBox } from "../selectBox/SelectBox";
 import "./addGuest.css";
 
-export const AddGuest = ({add, available, selectedTable}) => {
+export const AddGuest = ({add, available, selectedTable, setSpinner}) => {
     const [firstNameVal, setFirstNameVal] = useState("");
     const [LastNameVal, setLastNameVal] = useState("");
     const [gender, setGender] = useState("Mr.");
     const [labelVal, setLabelVal] = useState("");
     const [table, setTable] = useState("");
+    const [defaultMode, setDefaultMode] = useState(true);
 
-    // useEffect(()=> {
-    //     console.log(selectedTable);
-    //     if(table !== selectedTable) {
-    //         setTable(selectedTable)
-    //     }
-    // },[table])
+    useEffect(()=> {
+        setDefaultMode(true);
+    }, [selectedTable])
 
     const genderChanged = ({target}) => {
         setGender(target.value);
@@ -23,6 +21,7 @@ export const AddGuest = ({add, available, selectedTable}) => {
 
     const tableChanged = ({target}) => {
         setTable(target.value);
+        setDefaultMode(false);
     }
 
     const addGuest = async() => {
@@ -34,13 +33,15 @@ export const AddGuest = ({add, available, selectedTable}) => {
                 label: labelVal,
                 table: table,
             }
+            setSpinner(true);
             const {data} = await guestsAPI.post("/", newGuest);
+            setSpinner(false);
             add(data);
             setFirstNameVal("");
             setLabelVal("");
             setGender("Mr.");
             setLastNameVal("");
-            setTable(selectedTable);
+            setTable("");
         } catch (error) {
             console.log(error);
         }
@@ -65,7 +66,7 @@ export const AddGuest = ({add, available, selectedTable}) => {
                     <input value={labelVal} onChange={(e)=> setLabelVal(e.target.value)} />
                 </div>
                 <div className="table cell">
-                    <SelectBox onSelectChange={tableChanged} selectedTable={table} available={available} all={false}/>
+                    <SelectBox onSelectChange={tableChanged} selectedTable={defaultMode? selectedTable: table} available={available} all={false}/>
                     {/* <input type="number" max={20} min="1" value={table} onChange={tableChanged} /> */}
                 </div>
                 <div className="cell add">

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { guestsAPI } from "../../api/api";
 import { AddGuest } from "../addGuest/AddGuest";
+import { Headlines } from "../headlines/Headlines";
 import Row from "../row/Row";
 import { SelectBox } from "../selectBox/SelectBox";
+import { Spinner } from "../spinner/Spinner";
 import  "./guests.css";
 
 const getAvailable = (data, prev) => {
@@ -11,7 +13,9 @@ const getAvailable = (data, prev) => {
         copy[key].guests = {};
     }
     data.forEach(guest => {
-        copy[guest.table].guests[guest.id] = guest;
+        if(guest.table) {
+            copy[guest.table].guests[guest.id] = guest;
+        }
     })
     for(let key in copy) {
         let taken = 0;
@@ -27,6 +31,8 @@ const getAvailable = (data, prev) => {
 
 const Guests = () => {
     
+    const [isLoading, setIsLoading] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
     const [guestsList, setGuestsList] = useState([]);
     const [guestsListToDisplay, setGuestsListToDisplay] = useState([]);
     const [searchInput, setSearchInput] = useState("");
@@ -130,7 +136,9 @@ const Guests = () => {
     useEffect(() => {
         const getData = async() => {
             try {
+                setIsLoading(true);
                 const {data} = await guestsAPI.get("/");
+                setIsLoading(false);
                 setGuestsList(data);
                 // setGuestsListToDisplay(data);
                 // setAvailable(prev => getAvailable(data, prev));
@@ -168,7 +176,7 @@ const Guests = () => {
 
     const drawTable = () => {
         return guestsListToDisplay.map(guest => {
-            return <Row key={guest.id} content={guest} remove={removeGuest} guestsList={guestsList} available={available} edit={editGuest}/>
+            return <Row key={guest.id} content={guest} remove={removeGuest} guestsList={guestsList} available={available} isEdit={isEdit} setIsEdit={setIsEdit} edit={editGuest} setSpinner={setIsLoading}/>
         })
     }
 
@@ -176,18 +184,27 @@ const Guests = () => {
         setSelectedTable(target.value);
     }
 
+    const sortList = (sortedLIst) => {
+        setGuestsListToDisplay(sortedLIst);
+    }
+
     return (
-        <div>
-            <div className="search">
-                {/* Search:  */}
-                <input value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} />
-                <SelectBox onSelectChange={onFilterChange} available={available} selectedTable={selectedTable} all={true}/>
+        <>
+            {isLoading && <Spinner/>}
+            <div>
+                <div className="search">
+                    {/* Search:  */}
+                    <input value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} />
+                    <SelectBox onSelectChange={onFilterChange} available={available} selectedTable={selectedTable} all={true}/>
+                </div>
+                <div className="hedlines"></div>
+                <div className="table">
+                    <Headlines list={guestsListToDisplay} sortList={sortList}/>
+                    <AddGuest guestsList={guestsList} add={addGuest} available={available} selectedTable={selectedTable} setSpinner={setIsLoading}/>
+                    {drawTable()}
+                </div>
             </div>
-            <div className="table">
-                <AddGuest guestsList={guestsList} add={addGuest} available={available} selectedTable={selectedTable}/>
-                {drawTable()}
-            </div>
-        </div>
+        </>
     )
 };
 

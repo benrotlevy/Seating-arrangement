@@ -3,7 +3,7 @@ import { guestsAPI } from "../../api/api";
 import { SelectBox } from "../selectBox/SelectBox";
 import  "./row.css";
 
-const Row = ({content, remove, available, edit}) => {
+const Row = ({content, remove, available, edit, setSpinner, isEdit, setIsEdit}) => {
     
     const guestData = useRef(content);
     const [isEditMode, setIsEditMode] = useState(false);
@@ -35,7 +35,9 @@ const Row = ({content, remove, available, edit}) => {
         if(isEditMode) {
             editGuest();
         } else {
+            if(isEdit) return;
             setIsEditMode(prev => !prev);
+            setIsEdit(true);
         }
     }
 
@@ -48,9 +50,12 @@ const Row = ({content, remove, available, edit}) => {
                 label: label,
                 table: table,
             }
+            setSpinner(true);
             const {data} = await guestsAPI.put(`/${content.id}`, newDetailes);
+            setSpinner(false);
             guestData.current = data;
             edit(data);
+            setIsEdit(false);
             setIsEditMode(prev => !prev);
         } catch (error){
             console.log(error);
@@ -59,10 +64,13 @@ const Row = ({content, remove, available, edit}) => {
 
     const deleteGuest = async() => {
         if(isEditMode) {
+            setIsEdit(false);
             setIsEditMode(prev => !prev);
         } else {
             try {
+                setSpinner(true);
                 const {data} = await guestsAPI.delete(`/${content.id}`);
+                setSpinner(false);
                 remove(data.id);
             } catch (error) {
                 console.log(error);
