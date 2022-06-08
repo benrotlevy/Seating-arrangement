@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
 import { guestsAPI } from "../../api/api";
+import { SelectBox } from "../selectBox/SelectBox";
 import  "./row.css";
 
-const Row = ({content, remove}) => {
+const Row = ({content, remove, available, edit}) => {
     
     const guestData = useRef(content);
     const [isEditMode, setIsEditMode] = useState(false);
@@ -17,6 +18,7 @@ const Row = ({content, remove}) => {
     }
 
     const tableChanged = ({target}) => {
+        // console.log(target);
         setTable(target.value);
     }
 
@@ -48,6 +50,7 @@ const Row = ({content, remove}) => {
             }
             const {data} = await guestsAPI.put(`/${content.id}`, newDetailes);
             guestData.current = data;
+            edit(data);
             setIsEditMode(prev => !prev);
         } catch (error){
             console.log(error);
@@ -86,7 +89,8 @@ const Row = ({content, remove}) => {
                     <input value={label} onChange={(e)=> setLabel(e.target.value)} />
                 </div>
                 <div className="table cell">
-                    <input type="number" max={31} min={1} value={table} onChange={tableChanged} />
+                    <SelectBox onSelectChange={tableChanged} selectedTable={table} available={available} all={false}/>
+                    {/* <input type="number" max={31} min={1} value={table} onChange={tableChanged} /> */}
                 </div>
                 {insertEditDelete()}
             </div>
@@ -99,7 +103,7 @@ const Row = ({content, remove}) => {
             <div className="first-name cell">{guestData.current.firstName}</div>
             <div className="last-name cell">{guestData.current.lastName}</div>
             <div className="label cell">{guestData.current.label}</div>
-            <div className="table cell">{guestData.current.table}</div>
+            <div className="table cell">{guestData.current.table? `Table ${guestData.current.table}`: ""}</div>
             {insertEditDelete()}
         </div>
     )

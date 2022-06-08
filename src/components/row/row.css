@@ -11,6 +11,6 @@
     padding: 0.2rem;
 }
 
-.cell input {
-    width: 100%;
+.cell input, .cell select {
+    width: 95%;
 }
