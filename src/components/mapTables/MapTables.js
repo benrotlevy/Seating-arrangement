@@ -110,7 +110,7 @@ const MapTables = () => {
             }
         }
         getData();
-    })
+    }, [])
 
     const extractTablesData = (guestsList) => {
         const tables = {};
@@ -237,6 +237,13 @@ const MapTables = () => {
         }
         // console.log(chairs);
         setTables(chairs);
+    }
+
+    const isFull = (id) => {
+        if(!tables[id].map[0]) return false;
+        const res= tables[id].map.find(bool => bool===false);
+        if(res === false) return false;
+        return true;
     }
 
     return (
@@ -655,37 +662,37 @@ const MapTables = () => {
             <ellipse data-table={12} rx="4.904274" ry="4.495203" transform="matrix(0-1 1 0 752.676779 471.525786)" fill={tables[12].map[5]? "#003B5D" :"#d2dbed"} stroke="#000"/>
             <ellipse data-table={11} rx="4.904274" ry="4.495203" transform="matrix(0-1 1 0 66.525074 478.170994)" fill={tables[11].map[5]? "#003B5D" :"#d2dbed"} stroke="#000"/>
             <ellipse data-table={10} rx="4.904274" ry="4.495203" transform="matrix(0-1 1 0 152.021759 326.913023)" fill={tables[10].map[5]? "#003B5D" :"#d2dbed"} stroke="#000"/>
-            <rect data-id="31" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(152.602517 226.729275)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="30" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(68.92705 295.557703)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="29" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(783.318873 313.1875)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="28" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(783.718349 232.545726)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="27" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(785.213552 74.218329)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="26" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(710.603435 149.622603)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="25" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(709.941577 76.622603)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="24" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(784.809278 154.708735)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="23" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(69.917456 373.433695)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="22" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(124.259578 85.718329)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="21" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(68.66237 223.159579)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="20" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(68.92705 153.017283)" fill="#2b03f8" stroke="#000"/>
-            <rect data-id="19" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(152.721202 152.517283)" fill="#efb120" stroke="#000"/>
-            <rect data-id="18" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(235.044495 155.988009)" fill="#efb120" stroke="#000"/>
-            <rect data-id="17" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(235.044495 228.636655)" fill="#efb120" stroke="#000"/>
-            <rect data-id="16" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(637.218349 152.113009)" fill="#efb120" stroke="#000"/>
-            <rect data-id="15" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(714.098638 313.682703)" fill="#efb120" stroke="#000"/>
-            <rect data-id="14" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(711.589044 232.654782)" fill="#efb120" stroke="#000"/>
-            <rect data-id="13" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(637.718349 233.040929)" fill="#efb120" stroke="#000"/>
-            <rect data-id="12" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(754.314075 442.395989)" fill="#efb120" stroke="#000"/>
-            <rect data-id="11" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(68.16237 449.041197)" fill="#efb120" stroke="#000"/>
-            <rect data-id="10" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(153.659055 297.783226)" fill="#efb120" stroke="#000"/>
-            <ellipse data-id="9" rx="22" ry="19.5" transform="translate(673.1432 405.156745)" fill="#d2dbed" stroke="#000"/>
-            <ellipse data-id="8" rx="22" ry="19.5" transform="translate(167.946033 488.372286)" fill="#d2dbed" stroke="#000"/>
-            <ellipse data-id="7" rx="22" ry="19.5" transform="translate(174.103094 399.039649)" fill="#d2dbed" stroke="#000"/>
-            <ellipse data-id="6" rx="22" ry="19.5" transform="translate(670.6432 485.251309)" fill="#d2dbed" stroke="#000"/>
-            <rect data-id="5" width="75.196048" height="35.25" rx="0" ry="0" transform="matrix(-1 0 0-1 310.326894 409.376309)" fill="#d2dbed" stroke="#020202"/>
-            <rect data-id="4" width="75.196048" height="35.25" rx="0" ry="0" transform="translate(734.7173 380.295465)" fill="#d2dbed" stroke="#020202"/>
-            <rect data-id="3" width="75.196048" height="35.25" rx="0" ry="0" transform="translate(735.7373 508.295466)" fill="#d2dbed" stroke="#020202"/>
-            <rect data-id="2" width="50.520218" height="35.25" rx="0" ry="0" transform="translate(241.797576 300.413023)" fill="#d2dbed" stroke="#000"/>
-            <rect data-id="1" width="50.520218" height="35.25" rx="0" ry="0" transform="translate(630.398203 316.88484)" fill="#d2dbed" stroke="#000"/>
+            <rect data-id="31" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(152.602517 226.729275)" fill={isFull(31)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="30" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(68.92705 295.557703)" fill={isFull(30)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="29" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(783.318873 313.1875)" fill={isFull(29)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="28" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(783.718349 232.545726)" fill={isFull(28)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="27" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(785.213552 74.218329)" fill={isFull(27)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="26" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(710.603435 149.622603)" fill={isFull(26)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="25" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(709.941577 76.622603)" fill={isFull(25)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="24" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(784.809278 154.708735)" fill={isFull(24)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="23" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(69.917456 373.433695)" fill={isFull(23)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="22" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(124.259578 85.718329)" fill={isFull(22)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="21" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(68.66237 223.159579)" fill={isFull(21)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="20" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(68.92705 153.017283)" fill={isFull(20)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="19" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(152.721202 152.517283)" fill={isFull(19)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="18" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(235.044495 155.988009)" fill={isFull(18)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="17" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(235.044495 228.636655)" fill={isFull(17)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="16" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(637.218349 152.113009)" fill={isFull(16)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="15" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(714.098638 313.682703)" fill={isFull(15)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="14" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(711.589044 232.654782)" fill={isFull(14)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="13" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(637.718349 233.040929)" fill={isFull(13)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="12" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(754.314075 442.395989)" fill={isFull(12)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="11" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(68.16237 449.041197)" fill={isFull(11)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="10" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(153.659055 297.783226)" fill={isFull(10)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <ellipse data-id="9" rx="22" ry="19.5" transform="translate(673.1432 405.156745)" fill={isFull(9)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <ellipse data-id="8" rx="22" ry="19.5" transform="translate(167.946033 488.372286)" fill={isFull(8)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <ellipse data-id="7" rx="22" ry="19.5" transform="translate(174.103094 399.039649)" fill={isFull(7)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <ellipse data-id="6" rx="22" ry="19.5" transform="translate(670.6432 485.251309)" fill={isFull(6)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="5" width="75.196048" height="35.25" rx="0" ry="0" transform="matrix(-1 0 0-1 310.326894 409.376309)" fill={isFull(5)? "#003B5D" :"#d2dbed"} stroke="#020202"/>
+            <rect data-id="4" width="75.196048" height="35.25" rx="0" ry="0" transform="translate(734.7173 380.295465)" fill={isFull(4)? "#003B5D" :"#d2dbed"} stroke="#020202"/>
+            <rect data-id="3" width="75.196048" height="35.25" rx="0" ry="0" transform="translate(735.7373 508.295466)" fill={isFull(3)? "#003B5D" :"#d2dbed"} stroke="#020202"/>
+            <rect data-id="2" width="50.520218" height="35.25" rx="0" ry="0" transform="translate(241.797576 300.413023)" fill={isFull(2)? "#003B5D" :"#d2dbed"} stroke="#000"/>
+            <rect data-id="1" width="50.520218" height="35.25" rx="0" ry="0" transform="translate(630.398203 316.88484)" fill={isFull(1)? "#003B5D" :"#d2dbed"} stroke="#000"/>
             <rect width="11" height="540" rx="0" ry="0" transform="translate(860.5 52.610363)" fill="#d2dbed" strokeWidth="0"/>
             <rect width="11" height="540" rx="0" ry="0" transform="translate(32.426575 49.801815)" fill="#d2dbed" strokeWidth="0"/>
             <rect width="181" height="70.547603" rx="0" ry="0" transform="translate(364.233333 62.478599)" fill="#736868" stroke="#000"/>
