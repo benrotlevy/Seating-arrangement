@@ -101,17 +101,6 @@ const MapTables = () => {
         });
 
     useEffect(()=> {
-        const extractTablesData = (guestsList) => {
-            const tables = {};
-            guestsList.forEach(guest => {
-                if(tables[guest.table]) {
-                    tables[guest.table].push(guest);
-                } else {
-                    tables[guest.table] = [guest];
-                }
-            })
-            organizeAvailableChairs(tables);
-        }
         const getData = async() => {
             try {
                 const {data} = await guestsAPI.get("/");
@@ -121,19 +110,19 @@ const MapTables = () => {
             }
         }
         getData();
-    },[])
+    })
 
-    // const extractTablesData = (guestsList) => {
-    //     const tables = {};
-    //     guestsList.forEach(guest => {
-    //         if(tables[guest.table]) {
-    //             tables[guest.table].push(guest);
-    //         } else {
-    //             tables[guest.table] = [guest];
-    //         }
-    //     })
-    //     organizeAvailableChairs(tables);
-    // }
+    const extractTablesData = (guestsList) => {
+        const tables = {};
+        guestsList.forEach(guest => {
+            if(tables[guest.table]) {
+                tables[guest.table].push(guest);
+            } else {
+                tables[guest.table] = [guest];
+            }
+        })
+        organizeAvailableChairs(tables);
+    }
 
     const organizeAvailableChairs = (tables) => {
         const availableChairs = {
