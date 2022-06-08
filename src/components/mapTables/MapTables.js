@@ -110,7 +110,7 @@ const MapTables = () => {
             }
         }
         getData();
-    },[extractTablesData])
+    },[])
 
     const extractTablesData = (guestsList) => {
         const tables = {};
