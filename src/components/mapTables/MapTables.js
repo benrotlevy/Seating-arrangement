@@ -116,10 +116,12 @@ const MapTables = () => {
     const extractTablesData = (guestsList) => {
         const tables = {};
         guestsList.forEach(guest => {
-            if(tables[guest.table]) {
-                tables[guest.table].push(guest);
-            } else {
-                tables[guest.table] = [guest];
+            if(guest.table) {
+                if(tables[guest.table]) {
+                    tables[guest.table].push(guest);
+                } else {
+                    tables[guest.table] = [guest];
+                }
             }
         })
         organizeAvailableChairs(tables);
