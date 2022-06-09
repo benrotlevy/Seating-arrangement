@@ -1,0 +1,16 @@
+.home {
+    width: 100%;
+    height: 93vh;
+    /* background-color: red; */
+    background: url("../../roof.webp") center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.big-logo {
+    height: 20rem;
+    width: 20rem;
+    background: url("../../logo-big.png") center center/cover;
+}

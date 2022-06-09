@@ -248,8 +248,8 @@ const MapTables = () => {
     }
 
     return (
-        <div>
-            <svg id="e1HCkc54Xxi1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 890 650" shapeRendering="geometricPrecision" textRendering="geometricPrecision">
+        <div className="map-container">
+            <svg className="svg" id="e1HCkc54Xxi1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 890 650" shapeRendering="geometricPrecision" textRendering="geometricPrecision">
             <defs>
             <linearGradient id="e1HCkc54Xxi444-fill" x1="0" y1="0.5" x2="1" y2="0.5" spreadMethod="pad" gradientUnits="objectBoundingBox" gradientTransform="translate(0 0)">
             <stop id="e1HCkc54Xxi444-fill-0" offset="0%" stopColor="#000"/><stop id="e1HCkc54Xxi444-fill-1" offset="100%" stopColor="#fff"/>

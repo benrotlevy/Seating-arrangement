@@ -13,7 +13,10 @@ export const Header = () => {
                     </div>
                     <div className="nav-cell links-container">
                         <Link to="./">
-                            <div className="nav-btn">Map of Tables</div>
+                            <div className="nav-btn">Home</div>
+                        </Link>
+                        <Link to="./map">
+                            <div className="nav-btn">Map</div>
                         </Link>
                         <Link to="./guests">
                             <div className="nav-btn">guests</div>
