@@ -23,10 +23,12 @@ const Row = ({content, remove, available, edit, setSpinner, isEdit, setIsEdit}) 
     }
 
     const insertEditDelete = () => {
+        const btn1Class = isEditMode? "save": "edit";
+        const btn2Class = isEditMode? "cancel": "delete";
         return (
             <div className="cell edit-delete">
-                <button onClick={handleEdit}>{isEditMode? "Save": "Edit"}</button>
-                <button onClick={deleteGuest}>{isEditMode? "Cancel" :"Delete"}</button>
+                <div className={btn1Class} onClick={handleEdit}></div>
+                <div className={btn2Class} onClick={deleteGuest}></div>
             </div>
         )
     }

@@ -9,3 +9,9 @@ body {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+@media(max-width: 720px) {
+    html {
+        font-size: 10px;
+    }
+}

@@ -197,7 +197,6 @@ const Guests = () => {
                     <input value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} />
                     <SelectBox onSelectChange={onFilterChange} available={available} selectedTable={selectedTable} all={true}/>
                 </div>
-                <div className="hedlines"></div>
                 <div className="table">
                     <Headlines list={guestsListToDisplay} sortList={sortList}/>
                     <AddGuest guestsList={guestsList} add={addGuest} available={available} selectedTable={selectedTable} setSpinner={setIsLoading}/>

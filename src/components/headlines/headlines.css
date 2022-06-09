@@ -11,3 +11,8 @@
 .headline:hover {
     font-size: large;
 }
+
+.row .empty {
+    border: none;
+    width: 6rem;
+}

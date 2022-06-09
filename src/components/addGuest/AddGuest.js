@@ -70,7 +70,7 @@ export const AddGuest = ({add, available, selectedTable, setSpinner}) => {
                     {/* <input type="number" max={20} min="1" value={table} onChange={tableChanged} /> */}
                 </div>
                 <div className="cell add">
-                    <button onClick={addGuest}>Add</button>
+                    <div className="add-img" onClick={addGuest}></div>
                 </div>
             </div>
         </>
