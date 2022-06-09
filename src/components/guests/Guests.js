@@ -161,7 +161,7 @@ const Guests = () => {
     useEffect(()=> {
         setGuestsListToDisplay(guestsList.filter(guest => {
             const guestToString = guest.firstName+ " " +guest.lastName+" " +guest.label;
-            return guestToString.includes(searchInput) && (guest.table === selectedTable || !selectedTable);
+            return guestToString.toLowerCase().includes(searchInput.toLowerCase()) && (guest.table === selectedTable || !selectedTable);
         }))
         setAvailable(prev => getAvailable(guestsList, prev));
     }, [searchInput, guestsList, selectedTable])
@@ -202,14 +202,14 @@ const Guests = () => {
             {isLoading && <Spinner/>}
             <div>
                 <div className="search">
-                    {/* Search:  */}
-                    <input value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} />
+                    {`Filter:`} 
+                    <input className="filter" value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} />
                     <SelectBox onSelectChange={onFilterChange} available={available} selectedTable={selectedTable} all={true}/>
                 </div>
                 <div className="table">
                     <Headlines list={guestsListToDisplay} sortList={sortList}/>
-                    <AddGuest guestsList={guestsList} add={addGuest} available={available} selectedTable={selectedTable} setSpinner={setIsLoading}/>
                     {drawTable()}
+                    <AddGuest guestsList={guestsList} add={addGuest} available={available} selectedTable={selectedTable} setSpinner={setIsLoading}/>
                 </div>
             </div>
         </>

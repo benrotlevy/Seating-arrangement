@@ -47,6 +47,9 @@ a {
 
 .nav-btn {
     position: relative;
+    /* color: #2ee712; */
+    /* color: #ff0000; */
+    /* "#ff0000" : "#2ee712" */
 }
 
 .nav-btn::before {
@@ -80,5 +83,17 @@ a {
 @keyframes anim2 {
     to {
         width: 100%;
+    }
+}
+
+@media(max-width: 700px) {
+    .links-container {
+        gap: 0rem;
+    }
+    .logo-cont {
+        width: fit-content;
+    }
+    .nav-btn {
+        width: 7rem;
     }
 }

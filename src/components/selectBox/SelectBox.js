@@ -138,7 +138,7 @@ export const SelectBox = ({available, onSelectChange, selectedTable, all}) => {
     return (
         <>
             <select value={selectedTable} onChange={onSelectChange}>
-                <option value={""}>{all? "All Tables": "Choose Table"}</option>
+                <option value={""}>{all? "Select Table": "Choose Table"}</option>
                 {insertOptions()}
             </select>
         </>
