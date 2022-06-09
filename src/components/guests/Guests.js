@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { guestsAPI } from "../../api/api";
 import { AddGuest } from "../addGuest/AddGuest";
 import { Headlines } from "../headlines/Headlines";
@@ -31,6 +32,10 @@ const getAvailable = (data, prev) => {
 
 const Guests = () => {
     
+    const location = useLocation();
+    // if(location.state) {
+    //     const {passedFromLink} = location.state;
+    // }
     const [isLoading, setIsLoading] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const [guestsList, setGuestsList] = useState([]);
@@ -147,6 +152,10 @@ const Guests = () => {
             }
         }
         getData();
+        if(location.state) {
+            console.log(location.state);
+            setSelectedTable(location.state);
+        }
     },[])
 
     useEffect(()=> {

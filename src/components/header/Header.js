@@ -19,7 +19,7 @@ export const Header = () => {
                             <div className="nav-btn">Map</div>
                         </Link>
                         <Link to="./guests">
-                            <div className="nav-btn">guests</div>
+                            <div className="nav-btn">Guests</div>
                         </Link>
                     </div>
                     <div className="nav-cell log-container">Login</div>
