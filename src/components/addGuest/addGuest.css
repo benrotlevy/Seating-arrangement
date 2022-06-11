@@ -9,3 +9,7 @@
     background: url("../../plus.png") center center/cover;
     cursor: pointer;
 }
+
+.add-guest {
+    margin-bottom: 5rem;
+}

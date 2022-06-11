@@ -25,14 +25,15 @@ export const AddGuest = ({add, available, selectedTable, setSpinner}) => {
     }
 
     const addGuest = async() => {
+        const newGuest = {
+            firstName: firstNameVal,
+            lastName: LastNameVal,
+            gender: gender,
+            label: labelVal,
+            table: table,
+        }
+        if(defaultMode) newGuest.table = selectedTable;
         try {
-            const newGuest = {
-                firstName: firstNameVal,
-                lastName: LastNameVal,
-                gender: gender,
-                label: labelVal,
-                table: table,
-            }
             setSpinner(true);
             const {data} = await guestsAPI.post("/", newGuest);
             setSpinner(false);
@@ -49,7 +50,7 @@ export const AddGuest = ({add, available, selectedTable, setSpinner}) => {
 
     return (
         <>
-            <div className="row">
+            <div className="row add-guest">
                 <div className="gender cell">
                     <select onChange={genderChanged} value={gender}>
                         <option value="Mr." >Mr.</option>

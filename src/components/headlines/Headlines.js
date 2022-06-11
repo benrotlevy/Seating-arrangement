@@ -59,7 +59,7 @@ export const Headlines = ({sortList, list}) => {
     return (
         <>
             <div className="row">
-                <div onClick={genderSort} className="gender cell headline">Gender</div>
+                <div onClick={genderSort} className="gender cell headline">Title</div>
                 <div onClick={firstSort} className="first-name cell headline">First Name</div>
                 <div onClick={lastSort} className="last-name cell headline">Last Name</div>
                 <div onClick={labelSort} className="label cell headline">Tag</div>

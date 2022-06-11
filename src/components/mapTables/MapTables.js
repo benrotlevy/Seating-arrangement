@@ -666,7 +666,11 @@ const MapTables = () => {
             <ellipse data-table={12} rx="4.904274" ry="4.495203" transform="matrix(0-1 1 0 752.676779 471.525786)" fill={tables[12].map[5]? "#ff0000" : "#2ee712"} stroke="#000"/>
             <ellipse data-table={11} rx="4.904274" ry="4.495203" transform="matrix(0-1 1 0 66.525074 478.170994)" fill={tables[11].map[5]? "#ff0000" : "#2ee712"} stroke="#000"/>
             <ellipse data-table={10} rx="4.904274" ry="4.495203" transform="matrix(0-1 1 0 152.021759 326.913023)" fill={tables[10].map[5]? "#ff0000" : "#2ee712"} stroke="#000"/>
+            {/* <foreignObject x="380" y="100" width="160" height="160">
+                <h3 className="num">1</h3>
+            </foreignObject> */}
             <Link to={{pathname: "/guests", state:"31"}}>
+                {/* <span  className="tooltiptext">31</span> */}
             <rect data-id="31" width="37.196049" height="35.25" rx="0" ry="0" transform="translate(152.602517 226.729275)" fill={isFull(31)? "#003B5D" :"#d2dbed"} stroke="#000"/>
             </Link>
             <Link to={{pathname: "/guests", state:"30"}}>
